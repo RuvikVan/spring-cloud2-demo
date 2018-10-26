@@ -1,0 +1,38 @@
+spring:
+  application:
+    name: svca-service
+  cloud:
+    config:
+      discovery:
+        enabled: true
+        service-id: config
+      fail-fast: true
+      username: user
+      password: password
+      retry:
+        initial-interval: 2000
+        max-interval: 10000
+        multiplier: 2
+        max-attempts: 10
+  boot:
+    admin:
+      client:
+        url: http://user:password@192.168.1.200:8040
+        instance:
+          prefer-ip: true
+  security:
+    user:
+      name: user
+      password: password
+    oauth2:
+      client:
+        clientId: svca-service
+        clientSecret: password
+        accessTokenUri: http://192.168.1.200:8060/uaa/oauth/token
+        grant-type: password
+        scope: read write
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://user:password@192.168.1.200:8761/eureka/

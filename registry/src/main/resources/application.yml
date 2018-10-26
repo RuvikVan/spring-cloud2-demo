@@ -1,0 +1,28 @@
+spring:
+  profiles:
+    active: local
+  application:
+    name: registry
+
+server:
+  port: 8761
+
+---
+spring:
+  profiles: local
+eureka:
+  server:
+    enable-self-preservation: true #打开自我保护模式（缺省为打开）
+    eviction-interval-timer-in-ms: 20000 #续期时间，即扫描失效服务的间隔时间（缺省为60*1000ms）
+  instance:
+    ip-address: 192.168.1.200
+    prefer-ip-address: true
+    lease-renewal-interval-in-seconds: 10  #心跳时间，即服务续约间隔时间（缺省为30s）
+    lease-expiration-duration-in-seconds: 30 #发呆时间，即服务续约到期时间（缺省为90s
+  client:
+    register-with-eureka: false
+    fetch-registry: false
+    serviceUrl:
+      defaultZone: http://192.168.1.200:8761/eureka/
+#      defaultZone: http://${security.user.name}:${security.user.password}@192.168.1.200:${server.port}/eureka
+

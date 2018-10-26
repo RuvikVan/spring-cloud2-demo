@@ -1,0 +1,42 @@
+spring:
+  profiles:
+    active: local
+  application:
+    name: gateway
+  cloud:
+    config:
+      discovery:
+        enabled: true
+        service-id: config
+      fail-fast: true
+      username: user
+      password: password
+      retry:
+        initial-interval: 2000
+        max-interval: 10000
+        multiplier: 2
+        max-attempts: 10
+
+
+---
+spring:
+  profiles: local
+  redis:
+    host: 192.168.1.167
+    port: 6379
+    password: 123456
+    database: 2
+  boot:
+    admin:
+      client:
+        url: http://user:password@192.168.1.200:8040
+        instance:
+          prefer-ip: true
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://user:${REGISTRY_SERVER_PASSWORD:password}@192.168.1.200:8761/eureka/
+  instance:
+    prefer-ip-address: true
+    ip-address: 192.168.1.200

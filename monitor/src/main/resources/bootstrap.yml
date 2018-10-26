@@ -1,0 +1,30 @@
+spring:
+  profiles:
+    active: local
+  application:
+    name: monitor
+---
+spring:
+  profiles: local
+  rabbitmq:
+    host: 192.168.1.100
+    username: guest
+    password: guest
+#  boot:
+#    admin:
+#      routes:
+#        endpoints: env,metrics,trace,dump,jolokia,info,configprops,trace,logfile,refresh,flyway,liquibase,heapdump,loggers,auditevents,hystrix.stream
+#      turbine:
+#        clusters: default
+#        location: http://192.168.1.200:8041
+
+eureka:
+  instance:
+    ip-address: 192.168.1.200
+    prefer-ip-address: true
+    metadataMap:
+      userName: admin
+      userPassword: admin
+  client:
+    serviceUrl:
+      defaultZone: http://192.168.1.200:8761/eureka/

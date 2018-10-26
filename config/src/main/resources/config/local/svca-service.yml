@@ -1,0 +1,20 @@
+server:
+  port: 8989
+
+eureka:
+  instance:
+    metadata-map:
+      user.name: user
+      user.password: password
+
+security:
+  user:
+    name: user
+    password: password
+  oauth2:
+    client:
+      clientId: svca-service
+      clientSecret: password
+      accessTokenUri: http://192.168.1.200:8060${authserver.contextPath}/oauth/token
+      grant-type: client_credentials
+      scope: server
