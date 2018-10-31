@@ -40,3 +40,11 @@ eureka:
   instance:
     prefer-ip-address: true
     ip-address: 192.168.1.200
+
+management:
+  security:
+    enabled: false
+  endpoints:
+    web:
+      exposure:
+        include: '*'
