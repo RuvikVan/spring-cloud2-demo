@@ -1,4 +1,4 @@
-package com.rv.svca;
+package com.rv.svcb;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -9,10 +9,10 @@ import org.springframework.cloud.openfeign.EnableFeignClients;
 @EnableDiscoveryClient
 @SpringBootApplication
 @EnableFeignClients
-public class ServiceAApplication {
+public class ServiceBApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(ServiceAApplication.class, args);
+        SpringApplication.run(ServiceBApplication.class, args);
     }
 
 }

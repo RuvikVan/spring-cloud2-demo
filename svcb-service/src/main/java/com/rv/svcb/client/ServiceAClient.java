@@ -1,21 +1,22 @@
-package com.rv.svca.client;
+package com.rv.svcb.client;
 
+import com.rv.svcb.config.FeignHeaderInterceptor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.stereotype.Component;
 import org.springframework.web.bind.annotation.GetMapping;
 
-@FeignClient(name = "svcb-service", fallback = ServiceBClient.ServiceBClientFallback.class)
-public interface ServiceBClient {
+@FeignClient(name = "svca-service", fallback = ServiceAClient.ServiceAClientFallback.class, configuration = FeignHeaderInterceptor.class)
+public interface ServiceAClient {
 
-    @GetMapping(value = "/")
+    @GetMapping(value = "/qwe")
     String printServiceB();
 
     @Component
-    class ServiceBClientFallback implements ServiceBClient {
+    class ServiceAClientFallback implements ServiceAClient {
 
-        private static final Logger LOGGER = LoggerFactory.getLogger(ServiceBClientFallback.class);
+        private static final Logger LOGGER = LoggerFactory.getLogger(ServiceAClientFallback.class);
 
         @Override
         public String printServiceB() {
